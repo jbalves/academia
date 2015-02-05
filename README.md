@@ -1,2 +1,2 @@
 # Academia
-Projeto Apresentado ao Programa Jovens Talentos - FUCAPI - 2015
+Programa Jovens Talentos - FUCAPI - 2015
