@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Cadastro da Modalidade</title>
+	<h:outputStylesheet library="css" name="estilosAplicacao.css" />
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:menubar>
+			<p:submenu label="Cadastro">
+				<p:menuitem value="Produtos" />
+				<p:menuitem value="Categorias" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+
+	<h:form prependId="false">
+		<p:panelGrid columns="2" columnClasses="colunaEsquerda,colunaDireita"
+			rowClasses="normal" headerClass="tituloFormulario"
+			styleClass="tabelaGC">
+
+			<f:facet name="header">
+				<p:outputLabel value="Cadastro da Modalidade" />
+			</f:facet>
+			
+			<p:outputLabel value="Modalidade" />
+			<p:inputText size="20" />
+
+		</p:panelGrid>
+
+		<p:commandButton value="Salvar" />
+		<p:commandButton value="Alterar" />
+		<p:commandButton value="Deletar" />
+		<p:commandButton value="Buscar" />
+		<p:commandButton value="Cancelar" />
+
+	</h:form>
+
+</h:body>
+
+</html>
