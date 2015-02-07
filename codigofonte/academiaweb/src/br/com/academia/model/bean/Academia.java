@@ -1,30 +1,61 @@
 /**
- *  @author Jeferson Barros
+ *  @author Anderson Moura, Emerson Cardoso, Jeferson Barros
  */
 package br.com.academia.model.bean;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Academia {
+public class Academia extends AbstractBean {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	private String nome;
-	private Endereco endereco;
+	private String rua;
+	private int numero;
+	private String bairro;
+	private String complemento;
+	private int cep;
 	private String telefone;
 	private String cnpj;
 
-	public Integer getId() {
-		return id;
+		
+	public String getRua() {
+		return rua;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public int getCep() {
+		return cep;
+	}
+
+	public void setCep(int cep) {
+		this.cep = cep;
 	}
 
 	public String getNome() {
@@ -33,14 +64,6 @@ public class Academia {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getTelefone() {

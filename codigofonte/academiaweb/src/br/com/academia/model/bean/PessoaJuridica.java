@@ -3,7 +3,7 @@ package br.com.academia.model.bean;
 import java.util.Date;
 
 import javax.persistence.Entity;
-@Entity
+
 public class PessoaJuridica extends Pessoa {
 	private String cnpj;
 	private long inscEstadual;

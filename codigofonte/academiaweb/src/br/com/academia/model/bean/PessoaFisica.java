@@ -3,7 +3,7 @@ package br.com.academia.model.bean;
 import java.util.Date;
 
 import javax.persistence.Entity;
-@Entity
+
 public class PessoaFisica extends Pessoa {
 	private int rg;
 	private long cpf;
