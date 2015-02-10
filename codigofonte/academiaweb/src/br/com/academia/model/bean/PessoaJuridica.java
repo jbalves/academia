@@ -1,18 +1,29 @@
 package br.com.academia.model.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 
+@Entity
 public class PessoaJuridica extends Pessoa {
 	private String cnpj;
 	private long inscEstadual;
 
-	public PessoaJuridica(String nome, Endereco endereco, String[] telefone,
-			String[] email, Date dataCadastral) {
 
-		super(nome, endereco, telefone, email, dataCadastral);
+
+	public PessoaJuridica() {
+		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public PessoaJuridica(String nome, String rua, int numero, String bairro,
+			String complemento, int cep, String telefoneFixo, String telefoneCelular, String email,
+			Date dataCadastro, List<Turma> turmas, String cnpj, long inscEstadual) {
+		super(nome, rua, numero, bairro, complemento, cep, telefoneFixo, telefoneCelular, email,
+				dataCadastro);
+		this.cnpj=cnpj;
+		this.inscEstadual=inscEstadual;
 	}
 
 	public String getCnpj() {

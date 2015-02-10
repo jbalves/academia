@@ -1,9 +1,11 @@
-/**
- *  @author Anderson Moura, Emerson Cardoso, Jeferson Barros
- */
 package br.com.academia.model.bean;
 
 import javax.persistence.Entity;
+
+/**
+ * @author Anderson Moura, Emerson Cardoso, Jeferson Barros
+ */
+
 
 @Entity
 public class Academia extends AbstractBean {
@@ -17,7 +19,6 @@ public class Academia extends AbstractBean {
 	private String telefone;
 	private String cnpj;
 
-		
 	public String getRua() {
 		return rua;
 	}

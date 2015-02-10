@@ -1,20 +1,36 @@
 package br.com.academia.model.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+@Entity
 public class PessoaFisica extends Pessoa {
+	
 	private int rg;
 	private long cpf;
 	private int idade;
-	private char sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 
-	public PessoaFisica(String nome, Endereco endereco, String[] telefone,
-			String[] email, Date dataCadastral) {
+	public PessoaFisica() {
+		super();
+	}
 
-		super(nome, endereco, telefone, email, dataCadastral);
-		// TODO Auto-generated constructor stub
+	public PessoaFisica(String nome, String rua, int numero, String bairro,
+			String complemento, int cep, String telefoneFixo, String telefoneCelular, String email,
+			Date dataCadastro, List<Turma> turmas, int rg, long cpf, int idade, Sexo sexo) {
+		super(nome, rua, numero, bairro, complemento, cep, telefoneFixo, telefoneCelular, email,
+				dataCadastro);
+		
+		this.rg = rg;
+		this.cpf = cpf;
+		this.idade = idade;
+		this.sexo = sexo;
+
 	}
 
 	public int getRg() {
@@ -41,11 +57,11 @@ public class PessoaFisica extends Pessoa {
 		this.idade = idade;
 	}
 
-	public char getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

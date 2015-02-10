@@ -3,56 +3,63 @@ package br.com.academia.model.bean;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Turma {
+@Entity
+public class Turma extends AbstractBean {
+	private String modalide;
+	private String instrutor;
+	@Temporal(TemporalType.TIME)
+	private Date horaInicio;
+	@Temporal(TemporalType.TIME)
+	private Date horaFim;
+	@ElementCollection
+	@Temporal(TemporalType.DATE)
+	private List<Date> dias;
 	
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer id;
-		private String modalidade;
-		private String Instrutor;		
-		private List<Pessoa> clientes;		
-		private Date horarioInicio;
-		private Date horarioFim;
-		public String getModalidade() {
-			return modalidade;
-		}
-		public void setModalidade(String modalidade) {
-			this.modalidade = modalidade;
-		}
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
-		public String getInstrutor() {
-			return Instrutor;
-		}
-		public void setInstrutor(String instrutor) {
-			Instrutor = instrutor;
-		}
-		public List<Pessoa> getClientes() {
-			return clientes;
-		}
-		public void setClientes(List<Pessoa> clientes) {
-			this.clientes = clientes;
-		}
-		public Date getHorarioInicio() {
-			return horarioInicio;
-		}
-		public void setHorarioInicio(Date horarioInicio) {
-			this.horarioInicio = horarioInicio;
-		}
-		public Date getHorarioFim() {
-			return horarioFim;
-		}
-		public void setHorarioFim(Date horarioFim) {
-			this.horarioFim = horarioFim;
-		}
-				
+
+	public String getModalide() {
+		return modalide;
+	}
+
+	public void setModalide(String modalide) {
+		this.modalide = modalide;
+	}
+
+	public String getInstrutor() {
+		return instrutor;
+	}
+
+	public void setInstrutor(String instrutor) {
+		this.instrutor = instrutor;
+	}
+
+	public Date getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Date getHoraFim() {
+		return horaFim;
+	}
+
+	public void setHoraFim(Date horaFim) {
+		this.horaFim = horaFim;
+	}
+
+	public List<Date> getDias() {
+		return dias;
+	}
+
+	public void setDias(List<Date> dias) {
+		this.dias = dias;
+	}
+
+
 }

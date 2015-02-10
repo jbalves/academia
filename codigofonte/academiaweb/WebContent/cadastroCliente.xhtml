@@ -52,6 +52,29 @@
 		<p:commandButton value="Cancelar" />
 	</h:form>
 
+	<p:spacer width="100" height="40" />
+
+	<h:form id="frmDataTable">
+		<p:dataTable>
+			<f:facet name="header"> Lista de Clientes</f:facet>
+			<p:column headerText="ID">
+				<h:outputText value="id 001" />
+			</p:column>
+
+			<p:column headerText="NOME">
+				<h:outputText value="nome da academia" />
+			</p:column>
+
+			<p:column headerText="CNPJ">
+				<h:outputText value="#cnpj da academia" />
+			</p:column>
+
+			<p:column headerText="BAIRRO">
+				<h:outputText value="bairro da academia" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
 </h:body>
 
 </html>
