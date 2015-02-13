@@ -28,9 +28,10 @@
 				<p:inputText id="nome" size="20" maxlength="20" />
 
 				<p:outputLabel value="Sexo" />
-				<p:selectOneMenu id="sexo">
-					<f:selectItem itemLabel="Selecione o sexo" />
-				</p:selectOneMenu>
+				<p:selectOneButton id="sexo" value="#{selectOneView.option}">
+					<f:selectItem itemLabel="M" itemValue="masculino" />
+					<f:selectItem itemLabel="F" itemValue="feminino" />
+				</p:selectOneButton>
 
 				<p:outputLabel value="CPF" for="cpf" />
 				<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99" />
@@ -55,7 +56,7 @@
 
 				<p:outputLabel value="Telefone" for="telefone" />
 				<p:inputMask id="telefone" value="#{maskView.phone}"
-					mask="(999) 999-9999" />
+					mask="(99) 99999-9999" />
 
 				<p:outputLabel value="Email" for="email" />
 				<p:inputText id="email" />
