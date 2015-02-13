@@ -2,7 +2,7 @@ package br.com.academia.controller;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.academia.model.beam.Cliente;
+import br.com.academia.model.bean.Cliente;
 import br.com.academia.model.dao.ClienteDAO;
 
 @ManagedBean
@@ -18,7 +18,7 @@ public class ClienteMB {
 		this.cliente = cliente;
 	}
 	
-	public void getSalvar(){
+	public void salvar(){
 		System.out.println("Nome: " +cliente.getNome());
 	}
 }
