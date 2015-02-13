@@ -8,40 +8,16 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AbstractBean {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-
+	
 	public AbstractBean() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public AbstractBean(Integer id) {
+		super();
 		this.id = id;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AbstractBean other = (AbstractBean) obj;
-		if (getId() == null) {
-			if (other.getId() != null)
-				return false;
-		} else if (!getId().equals(other.getId()))
-			return false;
-		return true;
 	}
 
 	public Integer getId() {
@@ -51,5 +27,4 @@ public abstract class AbstractBean {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 }

@@ -3,79 +3,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-	<meta charset="UTF-8" />
-	<title>Cadastro de Cliente</title>
-	<h:outputStylesheet library="css" name="estilosAplicacao.css" />
-</h:head>
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
 
-<h:body>
-	<h:form>
-		<p:menubar>
-			<p:submenu label="Cadastro">
-				<p:menuitem value="Produtos" />
-				<p:menuitem value="Categorias" />
-			</p:submenu>
-		</p:menubar>
-	</h:form>
+		<h:form id="frmCliente">
 
-	<h:form prependId="false">
-		<p:panelGrid columns="2" columnClasses="colunaEsquerda,colunaDireita"
-			rowClasses="normal" headerClass="tituloFormulario"
-			styleClass="tabelaGC">
+			<p:toolbar style="margin-top: 80px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="cadastroCliente" />
+					<p:commandButton value="Salvar" id="botaoSalvar" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Pesquisa" action="consultaCliente.xhtml" />
+				</p:toolbarGroup>
+			</p:toolbar>
 
-			<f:facet name="header">
-				<p:outputLabel value="Cadastro de Cliente" />
-			</f:facet>
+			<p:panelGrid columns="4" id="painel"
+				style="width: 100%; margin-top: 20px" cellpadding="5">
 
-			<p:outputLabel value="ID" />
-			<p:inputText size="5" />
-			<p:outputLabel value="Nome" />
-			<p:inputText size="20" />
-			<p:outputLabel value="Endereco" />
-			<p:inputText size="40" />
-			<p:outputLabel value="Telefone" />
-			<p:inputText size="6" />
-			<p:outputLabel value="Estado Civil" />
-			<p:inputText size="15" />
-			<p:outputLabel value="CNPJ" />
-			<p:inputText size="15" />
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="20" maxlength="20" />
 
-		</p:panelGrid>
+				<p:outputLabel value="Sexo" />
+				<p:selectOneMenu id="sexo">
+					<f:selectItem itemLabel="Selecione o sexo" />
+				</p:selectOneMenu>
 
-		<p:commandButton value="Salvar" />
-		<p:commandButton value="Alterar" />
-		<p:commandButton value="Deletar" />
-		<p:commandButton value="Buscar" />
-		<p:commandButton value="Cancelar" />
-	</h:form>
+				<p:outputLabel value="CPF" for="cpf" />
+				<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99" />
 
-	<p:spacer width="100" height="40" />
+				<p:outputLabel value="Rua" for="rua" />
+				<p:inputText id="rua" />
 
-	<h:form id="frmDataTable">
-		<p:dataTable>
-			<f:facet name="header"> Lista de Clientes</f:facet>
-			<p:column headerText="ID">
-				<h:outputText value="id 001" />
-			</p:column>
+				<p:outputLabel value="Número" for="numero" />
+				<p:inputText id="numero" />
 
-			<p:column headerText="NOME">
-				<h:outputText value="nome da academia" />
-			</p:column>
+				<p:outputLabel value="Bairro" for="bairro" />
+				<p:inputText id="bairro" />
 
-			<p:column headerText="CNPJ">
-				<h:outputText value="#cnpj da academia" />
-			</p:column>
+				<p:outputLabel value="Complemento" for="complemento" />
+				<p:inputText id="complemento" />
 
-			<p:column headerText="BAIRRO">
-				<h:outputText value="bairro da academia" />
-			</p:column>
-		</p:dataTable>
-	</h:form>
+				<p:outputLabel value="Cidade" for="cidade" />
+				<p:inputText id="cidade" />
 
-</h:body>
+				<p:outputLabel value="Estado" for="estado" />
+				<p:inputText id="estado" />
+
+				<p:outputLabel value="Telefone" for="telefone" />
+				<p:inputMask id="telefone" value="#{maskView.phone}"
+					mask="(999) 999-9999" />
+
+				<p:outputLabel value="Email" for="email" />
+				<p:inputText id="email" />
+
+				<p:outputLabel value="Status" for="status" />
+				<p:selectOneButton id="status" value="#{selectOneView.option}">
+					<f:selectItem itemLabel="Ativo" itemValue="ativo" />
+					<f:selectItem itemLabel="Inativo" itemValue="inativo" />
+				</p:selectOneButton>
+
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 
 </html>
-

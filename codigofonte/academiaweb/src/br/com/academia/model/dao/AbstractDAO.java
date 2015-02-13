@@ -1,6 +1,5 @@
 package br.com.academia.model.dao;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,66 +8,71 @@ import javax.persistence.Query;
 import br.com.academia.model.bean.AbstractBean;
 import br.com.academia.util.JPAUtil;
 
-public abstract class AbstractDAO<T extends AbstractBean, K> {
-
-	private EntityManager entityManager;
-
-	private Class<T> persistentClass;
-
-	public AbstractDAO() {
-		this.persistentClass = getClassType();
-		entityManager = new JPAUtil().getEntityManager();
+public abstract class AbstractDAO<T extends AbstractBean, k> {
+	
+	private EntityManager manager;
+	private final Class<T> persistent;
+	
+	public AbstractDAO(Class<T> typo) {
+		manager = new JPAUtil().getEntityManager();
+		persistent = typo;
 	}
 	
-	private Class<T> getClassType() {
-		ParameterizedType parameterizedType = (ParameterizedType)getClass().getGenericSuperclass(); 
-		return (Class<T>)parameterizedType.getActualTypeArguments()[0];
+	public void salvar(T bean){
+		
+		try {
+			manager.getTransaction().begin();
+			manager.persist(bean);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.getStackTrace();
+		}finally{
+			manager.close();
+		}
+		
 	}
-
-	public void salvar(T entity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(entity);
-		entityManager.getTransaction().commit();
+	
+	public List<T> buscarTodos(){
+		try {
+			Query query = manager.createQuery("SELECT m FROM "+ persistent.getName() +" m");
+			List<T> lista = query.getResultList();
+			return lista;
+		} catch (Exception e) {
+			e.getStackTrace();
+			return null;
+		}finally{
+			manager.close();
+		}
+		
 	}
-
-	public void editar(T entity) {
-		entityManager.getTransaction().begin();
-		entityManager.merge(entity);
-		entityManager.getTransaction().commit();
+	
+	public void alterar(T bean, k id){
+		
+		
+		try {
+			bean.setId((Integer)id);
+			manager.getTransaction().begin();
+			manager.merge(bean);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.getStackTrace();
+		}finally{
+			manager.close();
+		}
+		
 	}
-
-	public void excluir(T entity) {
-		entityManager.getTransaction().begin();
-		// evitar o erro de enviar objeto do tipo detached, pois so pode ser
-		// removido do tipo managent
-		entityManager.remove(entityManager
-				.getReference(persistentClass, entity).getId());
-		entityManager.getTransaction().commit();
-
-	}
-
-	public List<T> listar() {
-		return entityManager.createQuery(("From " + persistentClass.getName()))
-				.getResultList();
-	}
-
-	public List<T> listarTodos() {
-		Query query = entityManager.createQuery(("Select t FROM "
-				+ persistentClass.getName() + " t"));
-		List<T> lista = query.getResultList();
-		return lista;
-	}
-
-	public T getByPrimaryKey(T entity) {
-		return entityManager.find(persistentClass, entity.getId());
-	}
-
-	public T getByPrimaryKey(K key) {
-		return entityManager.find(persistentClass, key);
-	}
-
-	public EntityManager getEntityManager() {
-		return entityManager;
+	
+	public void deletar(T bean){
+		try {
+			manager.getTransaction().begin();
+			manager.remove(manager.getReference(persistent, bean).getId());
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			e.getStackTrace();
+		}finally{
+			manager.close();
+		}
+		
 	}
 
 }
