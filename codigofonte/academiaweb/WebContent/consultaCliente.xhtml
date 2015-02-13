@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="frmCliente">
+			<p:panel header="Lista de Clientes" style="margin-top: 80px">
+				<p:outputPanel>
+					<p:inputText placeholder="Procurar cliente" style="width: 20%"
+						size="30" />
+
+					<p:commandButton id="btBuscar" value="Consultar"
+						title="consultar por nome" icon="ui-icon-search"
+						actionListener="#{turmaMB.filtrar}" update=":frmCliente:dataTable" />
+				</p:outputPanel>
+
+				<p:spacer width="100" height="10" />
+
+				<p:dataTable id="dataTable" value="#{turmaMB.turmas}" var="turma"
+					rows="10" paginator="true" paginatorPosition="bottom">
+
+					<p:column headerText="ID" style="width:5%">	
+						<h:outputText value="#{turma.id}" />
+					</p:column>
+
+					<p:column headerText="Nome" style="width:30%">
+						<h:outputText value="#{turma.modalidade}" />
+					</p:column>
+
+					<p:column headerText="CPF" style="width:40%">
+						<h:outputText value="#{turma.instrutor}" />
+					</p:column>
+
+					<p:column headerText="Status" style="text-align: center">
+						<h:outputText value="#{turma.horario}" />
+					</p:column>
+
+					<p:column style="width:15%;text-align:center"
+						headerText="Ações">
+						<p:commandLink id="visualizar" value="Visualizar">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{firmaMB.visualizar}" />
+						</p:commandLink>
+						<p:spacer height="0" width="10" />
+						<p:commandLink id="alterar" action="#{turmaMB.exibirAlterar}"
+							value="Alterar">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{turmaMB.entidade}" />
+						</p:commandLink>
+						<p:spacer height="0" width="10" />
+						<p:commandLink id="excluir" action="#{turmaMB.excluir}"
+							value="Excluir" update=":frmTurma">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{turmaMB.entidade}" />
+							<p:confirm header="Solicitação de confirmação"
+								message="Confirma a exclusão do registro?" icon="ui-icon-alert" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

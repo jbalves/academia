@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head />
+<h:body>
+	<div id="topo">
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:submenu label="Cadastro" icon="ui-icon-document">
+					<p:menuitem value="Cliente" url="cadastroCliente.xhtml"
+						icon="ui-icon-contact" />
+					<p:separator />
+					<p:menuitem value="Turma" url="cadastroTurma.xhtml"
+						icon="ui-icon-clipboard" />
+				</p:submenu>
+
+				<p:submenu label="Consulta" icon="ui-icon-search">
+					<p:menuitem value="Clientes" url="consultaCliente.xhtml"
+						icon="ui-icon-person" />
+					<p:separator />
+					<p:menuitem value="Turmas" url="consultaTurma.xhtml"
+						icon="ui-icon-document" />
+				</p:submenu>
+
+				<p:submenu label="Financeiro" icon="ui-icon-cart">
+					<p:menuitem value="Receitas" icon="ui-icon-refresh" />
+					<p:separator />
+					<p:menuitem value="Despesas" url="#" icon="ui-icon-disk" />
+				</p:submenu>
+
+				<p:submenu label="Ajuda" icon="ui-icon-help">
+					<p:menuitem value="Contents" url="#" />
+					<p:submenu label="Search" icon="ui-icon-search">
+						<p:submenu label="Text">
+							<p:menuitem value="Workspace" url="#" />
+						</p:submenu>
+						<p:menuitem value="File" url="#" />
+					</p:submenu>
+				</p:submenu>
+
+
+				<f:facet name="options">
+					<p:commandButton value="Home" ajax="false" action="index.xhtml"
+						icon="ui-icon-home" />
+					<p:commandButton type="button" value="Sair" icon="ui-icon-power" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+
+	</div>
+	<div>
+		<ui:insert name="conteudo" />
+	</div>
+	<div id="rodape"></div>
+</h:body>
+</html>
