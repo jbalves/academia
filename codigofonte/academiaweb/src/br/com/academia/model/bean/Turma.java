@@ -14,9 +14,16 @@ public class Turma extends AbstractBean {
 	@Enumerated(EnumType.STRING)
 	private Horario horario;
 	private String instrutor;
+	private double valor;
 	@ManyToMany(mappedBy="turmas")
 	private List<Cliente> clientes;
 	
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 	public String getModalidade() {
 		return modalidade;
 	}
@@ -41,7 +48,5 @@ public class Turma extends AbstractBean {
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	
-	
 	
 }

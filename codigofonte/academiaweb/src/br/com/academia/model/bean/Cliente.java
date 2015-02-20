@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,21 +16,39 @@ public class Cliente extends AbstractBean {
 	private String nome;
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
-	private long cpf;
+	private String cpf;
 	private String rua;
 	private int numero;
 	private String bairro;
 	private String complemento;
 	private String cidade;
 	private String estado;
-	private int telefone;
+	private String telefone;
 	private String email;
-	private boolean status;
+	private double valorPagar;
 	private Date dataDeCadastro;
+	@ManyToOne
+	private Academia academia;
 	@OneToMany(mappedBy="cliente")
 	private List<Mensalidade> mensalidades;
 	@ManyToMany
 	private List<Turma> turmas;
+	
+	public double getValorPagar() {
+		return valorPagar;
+	}
+
+	public void setValorPagar(double valorPagar) {
+		this.valorPagar = valorPagar;
+	}
+
+	public Academia getAcademia() {
+		return academia;
+	}
+
+	public void setAcademia(Academia academia) {
+		this.academia = academia;
+	}
 	
 	public List<Mensalidade> getMensalidades() {
 		return mensalidades;
@@ -47,14 +66,6 @@ public class Cliente extends AbstractBean {
 		this.dataDeCadastro = dataDeCadastro;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	public Sexo getSexo() {
 		return sexo;
 	}
@@ -63,11 +74,11 @@ public class Cliente extends AbstractBean {
 		this.sexo = sexo;
 	}
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -119,11 +130,11 @@ public class Cliente extends AbstractBean {
 		this.estado = estado;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
