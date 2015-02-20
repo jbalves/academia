@@ -14,25 +14,32 @@
 			<p:toolbar style="margin-top: 80px">
 				<p:toolbarGroup>
 					<p:button value="Novo" outcome="cadastroCliente" />
-					<p:commandButton value="Salvar" id="botaoSalvar" />
+					<p:commandButton value="Salvar" id="botaoSalvar" action="#{turmaMB.salvar}"/>
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Pesquisa" action="consultaCliente.xhtml" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:panelGrid columns="6" id="painel"
+			<p:panelGrid columns="4" id="painel"
 				style="width: 100%; margin-top: 20px" cellpadding="5">
 
 				<p:outputLabel value="Modalidade" for="modalidade" />
-				<p:inputText id="modalidade" size="20" maxlength="20" />
+				<p:inputText id="modalidade" size="20" maxlength="20"
+					value="#{turmaMB.turma.modalidade}" />
 
-				<p:outputLabel value="Horário" for="horario" />
-				<p:inputText id="horario" />
+				<p:outputLabel value="Horário" for="horario"/>
+				<p:selectOneButton id="horario" value="#{turmaMB.turma.horario}">
+					<f:selectItem itemLabel="Manhã" itemValue="MATUTINO" />
+					<f:selectItem itemLabel="Tarde" itemValue="VESPERTINO" />
+					<f:selectItem itemLabel="Noite" itemValue="NOTURNO" />
+				</p:selectOneButton>
 
 				<p:outputLabel value="Instrutor" for="instrutor" />
-				<p:inputText id="instrutor" />
+				<p:inputText id="instrutor" value="#{turmaMB.turma.instrutor}" />
 
+				<p:outputLabel value="Valor Mensal" for="mensalidade" />
+				<p:inputText id="mensalidade" value="#{turmaMB.turma.valor}" />
 
 			</p:panelGrid>
 

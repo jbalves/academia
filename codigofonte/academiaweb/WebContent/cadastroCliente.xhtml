@@ -10,11 +10,10 @@
 	<ui:define name="conteudo">
 
 		<h:form id="frmCliente">
-
 			<p:toolbar style="margin-top: 80px">
 				<p:toolbarGroup>
 					<p:button value="Novo" outcome="cadastroCliente" />
-					<p:commandButton value="Salvar" id="botaoSalvar" />
+					<p:commandButton value="Salvar" id="botaoSalvar" action="#{clienteMB.salvar}" />
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Pesquisa" action="consultaCliente.xhtml" />
@@ -25,47 +24,40 @@
 				style="width: 100%; margin-top: 20px" cellpadding="5">
 
 				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" size="20" maxlength="20" />
+				<p:inputText id="nome" size="20" maxlength="20" value="#{clienteMB.cliente.nome}" />
 
 				<p:outputLabel value="Sexo" />
-				<p:selectOneButton id="sexo" value="#{selectOneView.option}">
-					<f:selectItem itemLabel="M" itemValue="masculino" />
-					<f:selectItem itemLabel="F" itemValue="feminino" />
+				<p:selectOneButton id="sexo" value="#{clienteMB.cliente.sexo}">
+					<f:selectItem itemLabel="M" itemValue="MASCULINO" />
+					<f:selectItem itemLabel="F" itemValue="FEMININO" />
 				</p:selectOneButton>
 
 				<p:outputLabel value="CPF" for="cpf" />
-				<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99" />
+				<p:inputMask id="cpf" mask="999.999.999-99" value="#{clienteMB.cliente.cpf}"/>
 
-				<p:outputLabel value="Rua" for="rua" />
-				<p:inputText id="rua" />
+				<p:outputLabel value="Rua" for="rua"/>
+				<p:inputText id="rua" value="#{clienteMB.cliente.rua}"/>
 
 				<p:outputLabel value="Número" for="numero" />
-				<p:inputText id="numero" />
+				<p:inputText id="numero" value="#{clienteMB.cliente.numero}"/>
 
 				<p:outputLabel value="Bairro" for="bairro" />
-				<p:inputText id="bairro" />
+				<p:inputText id="bairro" value="#{clienteMB.cliente.bairro}"/>
 
 				<p:outputLabel value="Complemento" for="complemento" />
-				<p:inputText id="complemento" />
+				<p:inputText id="complemento" value="#{clienteMB.cliente.complemento}"/>
 
 				<p:outputLabel value="Cidade" for="cidade" />
-				<p:inputText id="cidade" />
+				<p:inputText id="cidade" value="#{clienteMB.cliente.cidade}"/>
 
 				<p:outputLabel value="Estado" for="estado" />
-				<p:inputText id="estado" />
+				<p:inputText id="estado" value="#{clienteMB.cliente.estado}"/>
 
 				<p:outputLabel value="Telefone" for="telefone" />
-				<p:inputMask id="telefone" value="#{maskView.phone}"
-					mask="(99) 99999-9999" />
+				<p:inputMask id="telefone" mask="(99) 99999-9999" value="#{clienteMB.cliente.telefone}"/>
 
 				<p:outputLabel value="Email" for="email" />
-				<p:inputText id="email" />
-
-				<p:outputLabel value="Status" for="status" />
-				<p:selectOneButton id="status" value="#{selectOneView.option}">
-					<f:selectItem itemLabel="Ativo" itemValue="ativo" />
-					<f:selectItem itemLabel="Inativo" itemValue="inativo" />
-				</p:selectOneButton>
+				<p:inputText id="email" value="#{clienteMB.cliente.email}"/>
 
 			</p:panelGrid>
 

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="frmMensalidade">
+
+			<p:panel header="Cadastrar Mensalidade" style="margin-top: 80px">
+				<p:outputPanel>
+				<p:outputLabel value="Valor Mensal"/>
+				<h:outputText> </h:outputText>
+
+				</p:outputPanel>
+			</p:panel>
+
+			<p:panel header="Lista de Mensalidades" style="margin-top: 20px">
+				<p:outputPanel>
+					<p:inputText placeholder="Procurar mensalidade" style="width: 20%"
+						size="30" />
+
+					<p:commandButton id="btBuscar" value="Consultar"
+						title="consultar por nome" icon="ui-icon-search"
+						actionListener="#{mensalidadeMB.listar}"
+						update=":frmMensalidade:dataTable" />
+				</p:outputPanel>
+
+				<p:spacer width="100" height="10" />
+
+				<p:dataTable id="dataTable" value="#{mensalidadeMB.mensalidades}"
+					var="mensalidade" rows="10" paginator="true"
+					paginatorPosition="bottom">
+
+					<p:column headerText="Valor Mensal" style="width:10%">
+						<h:outputText value="#{mensalidade.valorMensal}" />
+					</p:column>
+
+					<p:column headerText="Valor Pago" style="width:10%">
+						<h:outputText value="#{mensalidade.valorPago}" />
+					</p:column>
+
+					<p:column headerText="Mês" style="width:20%">
+						<h:outputText value="#{mensalidade.mes}" />
+					</p:column>
+
+					<p:column headerText="Data Pagamento"
+						style="text-align: center;width:20%">
+						<h:outputText value="#{mensalidade.dataPagamento}" />
+					</p:column>
+
+					<p:column style="width:20%;text-align:center" headerText="Ações">
+						<p:commandLink id="visualizar" value="Visualizar">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{mensalidadeMB.visualizar}" />
+						</p:commandLink>
+						<p:spacer height="0" width="10" />
+						<p:commandLink id="alterar"
+							action="#{mensalidadeMB.exibirAlterar}" value="Alterar">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{mensalidadeMB.entidade}" />
+						</p:commandLink>
+						<p:spacer height="0" width="10" />
+						<p:commandLink id="excluir" action="#{mensalidadeMB.excluir}"
+							value="Excluir" update=":frmMensalidade">
+							<f:setPropertyActionListener value="#{entidade}"
+								target="#{mensalidadeMB.entidade}" />
+							<p:confirm header="Solicitação de confirmação"
+								message="Confirma a exclusão do registro?" icon="ui-icon-alert" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>
