@@ -16,50 +16,40 @@
 
 					<p:commandButton id="btBuscar" value="Consultar"
 						title="consultar por nome" icon="ui-icon-search"
-						actionListener="#{turmaMB.filtrar}" update=":frmCliente:dataTable" />
+						update=":frmCliente:dataTable" />
 				</p:outputPanel>
 
 				<p:spacer width="100" height="10" />
 
-				<p:dataTable id="dataTable" value="#{turmaMB.turmas}" var="turma"
-					rows="10" paginator="true" paginatorPosition="bottom">
+				<p:dataTable id="dataTable" value="#{consultaClienteMB.clientes}"
+					var="cliente" rows="10" paginator="true" paginatorPosition="bottom">
 
-					<p:column headerText="ID" style="width:5%">	
-						<h:outputText value="#{turma.id}" />
+					<p:column headerText="ID" style="width:5%">
+						<h:outputText value="#{cliente.id}" />
 					</p:column>
 
 					<p:column headerText="Nome" style="width:30%">
-						<h:outputText value="#{turma.modalidade}" />
+						<h:outputText value="#{cliente.nome}" />
 					</p:column>
 
 					<p:column headerText="CPF" style="width:40%">
-						<h:outputText value="#{turma.instrutor}" />
+						<h:outputText value="999.999.999-99" />
 					</p:column>
 
-					<p:column headerText="Status" style="text-align: center">
-						<h:outputText value="#{turma.horario}" />
-					</p:column>
+					<p:column style="width:15%;text-align:center" headerText="Ações">
 
-					<p:column style="width:15%;text-align:center"
-						headerText="Ações">
-						<p:commandLink id="visualizar" value="Visualizar">
+						<p:commandButton id="visualizar" icon="ui-icon-search"
+							title="Visualizar">
 							<f:setPropertyActionListener value="#{entidade}"
 								target="#{firmaMB.visualizar}" />
-						</p:commandLink>
-						<p:spacer height="0" width="10" />
-						<p:commandLink id="alterar" action="#{turmaMB.exibirAlterar}"
-							value="Alterar">
+						</p:commandButton>
+
+						<p:commandButton id="mensalidader" icon="ui-icon-calculator"
+							title="Mensalidade">
 							<f:setPropertyActionListener value="#{entidade}"
-								target="#{turmaMB.entidade}" />
-						</p:commandLink>
-						<p:spacer height="0" width="10" />
-						<p:commandLink id="excluir" action="#{turmaMB.excluir}"
-							value="Excluir" update=":frmTurma">
-							<f:setPropertyActionListener value="#{entidade}"
-								target="#{turmaMB.entidade}" />
-							<p:confirm header="Solicitação de confirmação"
-								message="Confirma a exclusão do registro?" icon="ui-icon-alert" />
-						</p:commandLink>
+								target="#{firmaMB.mensalidade}" />
+						</p:commandButton>
+
 					</p:column>
 
 				</p:dataTable>
