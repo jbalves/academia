@@ -8,17 +8,23 @@ import br.com.academia.model.dao.ClienteDAO;
 @ManagedBean
 public class ClienteMB {
 
-	private Cliente cliente = new Cliente();
+	private Cliente cliente;
 	private ClienteDAO clienteDAO = new ClienteDAO();
+
+	public ClienteMB() {
+		cliente = new Cliente();
+	}
 	
 	public Cliente getCliente() {
 		return cliente;
 	}
+	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 	
 	public void salvar(){
-		System.out.println("Nome: " +cliente.getNome());
+		clienteDAO.salvar(cliente);
 	}
+
 }
