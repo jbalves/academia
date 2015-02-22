@@ -11,15 +11,38 @@
 		<h:form id="frmMensalidade">
 
 			<p:panel header="Cadastrar Mensalidade" style="margin-top: 80px">
-				<p:outputPanel>
-					<p:outputLabel value="Valor Mensal" />
-					<h:outputText value="" />
-				</p:outputPanel>
+				<p:panelGrid columns="2" id="panel"
+					style="width: 100%; margin-top: 20px" cellpadding="5">
+
+					<p:outputLabel for="valorMensal" value="Valor Mensal: " />
+					<h:outputText id="valorMensal" value="" />
+
+					<p:outputLabel for="valorPago" value="Valor Pago:" />
+					<p:inputText id="valorPago" value="" />
+
+					<p:selectOneMenu id="mes">
+						<f:selectItem itemLabel="Selecione o Mês" itemValue="" />
+						<f:selectItem itemLabel="JANEIRO" itemValue="" />
+						<f:selectItem itemLabel="FEVEREIRO" itemValue="" />
+						<f:selectItem itemLabel="MARÇO" itemValue="" />
+						<f:selectItem itemLabel="ABRIL" itemValue="" />
+						<f:selectItem itemLabel="MAIO" itemValue="" />
+						<f:selectItem itemLabel="JUNHO" itemValue="" />
+						<f:selectItem itemLabel="JULHO" itemValue="" />
+						<f:selectItem itemLabel="AGOSTO" itemValue="" />
+						<f:selectItem itemLabel="SETEMBRO" itemValue="" />
+						<f:selectItem itemLabel="OUTUBRO" itemValue="" />
+						<f:selectItem itemLabel="NOVEMBRO" itemValue="" />
+						<f:selectItem itemLabel="DEZEMBRO" itemValue="" />
+					</p:selectOneMenu>
+					<p:commandButton value="Salvar" />
+				</p:panelGrid>
 			</p:panel>
 
 			<p:panel header="Observações" style="margin-top: 20px">
-				<p:inputTextarea rows="5" cols="30" counter="display" maxlength="100"
-					counterTemplate="{0} caracteres restantes" autoResize="false" />
+				<p:inputTextarea rows="5" cols="30" counter="display"
+					maxlength="100" counterTemplate="{0} caracteres restantes"
+					autoResize="false" />
 				<h:outputText id="display" />
 			</p:panel>
 
