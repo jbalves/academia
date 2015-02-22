@@ -12,10 +12,15 @@
 
 			<p:panel header="Cadastrar Mensalidade" style="margin-top: 80px">
 				<p:outputPanel>
-				<p:outputLabel value="Valor Mensal"/>
-				<h:outputText> </h:outputText>
-
+					<p:outputLabel value="Valor Mensal" />
+					<h:outputText value="" />
 				</p:outputPanel>
+			</p:panel>
+
+			<p:panel header="Observações" style="margin-top: 20px">
+				<p:inputTextarea rows="5" cols="30" counter="display" maxlength="100"
+					counterTemplate="{0} caracteres restantes" autoResize="false" />
+				<h:outputText id="display" />
 			</p:panel>
 
 			<p:panel header="Lista de Mensalidades" style="margin-top: 20px">
