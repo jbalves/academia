@@ -1,11 +1,14 @@
 package br.com.academia.controller;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.com.academia.model.bean.Cliente;
 import br.com.academia.model.dao.ClienteDAO;
 
 @ManagedBean
+@ViewScoped
 public class ClienteMB {
 
 	private Cliente cliente;
@@ -21,6 +24,16 @@ public class ClienteMB {
 	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public String alterar(){
+		clienteDAO.alterar(cliente, cliente.getId());
+		return "/cadastroCliente.xhtml?faces-redirect=true";
+	}
+	
+	public String mensalidade(){
+		//clienteDAO.alterar(cliente, cliente.getId());
+		return "/mensalidade.xhtml?faces-redirect=true";
 	}
 	
 	public void salvar(){

@@ -15,4 +15,6 @@ public class ClienteDAO extends AbstractDAO<Cliente, Integer> {
 	public List<Cliente> buscarNome(){
 		return null;
 	}
+	
+	
 }

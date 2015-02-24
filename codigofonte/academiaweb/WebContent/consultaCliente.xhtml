@@ -39,15 +39,11 @@
 					<p:column style="width:15%;text-align:center" headerText="Ações">
 
 						<p:commandButton id="visualizar" icon="ui-icon-search"
-							title="Visualizar">
-							<f:setPropertyActionListener value="#{entidade}"
-								target="#{firmaMB.visualizar}" />
+							title="Visualizar" action="#{clienteMB.alterar}">
 						</p:commandButton>
 
 						<p:commandButton id="mensalidader" icon="ui-icon-calculator"
-							title="Mensalidade">
-							<f:setPropertyActionListener value="#{entidade}"
-								target="#{firmaMB.mensalidade}" />
+							title="Mensalidade" action="#{clienteMB.mensalidade}">
 						</p:commandButton>
 
 					</p:column>

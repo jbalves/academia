@@ -12,10 +12,10 @@
 
 			<p:panel header="Cadastrar Mensalidade" style="margin-top: 80px">
 				<p:panelGrid columns="2" id="panel"
-					style="width: 100%; margin-top: 20px" cellpadding="5">
+					style="width: 100%; margin-top: 10px" cellpadding="5">
 
 					<p:outputLabel for="valorMensal" value="Valor Mensal: " />
-					<h:outputText id="valorMensal" value="" />
+					<h:outputText id="valorMensal" value="R$ 300,00" />
 
 					<p:outputLabel for="valorPago" value="Valor Pago:" />
 					<p:inputText id="valorPago" value="" />
@@ -39,14 +39,14 @@
 				</p:panelGrid>
 			</p:panel>
 
-			<p:panel header="Observações" style="margin-top: 20px">
+			<p:panel header="Observações" style="margin-top: 10px">
 				<p:inputTextarea rows="5" cols="30" counter="display"
 					maxlength="100" counterTemplate="{0} caracteres restantes"
 					autoResize="false" />
 				<h:outputText id="display" />
 			</p:panel>
 
-			<p:panel header="Lista de Mensalidades" style="margin-top: 20px">
+			<p:panel header="Lista de Mensalidades" style="margin-top: 10px">
 				<p:outputPanel>
 					<p:inputText placeholder="Procurar mensalidade" style="width: 20%"
 						size="30" />

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>login</title>
+	<h:outputStylesheet library="academiaweb" name="estilo.css" />
+</h:head>
+<h:body>
+	<div id="login-dialog">
+		<h1>Login</h1>
+		<h:form id="frm">
+			<p:messages autoUpdate="true" />
+			<h:panelGrid columns="2" styleClass="grid-login">
+			
+				<p:outputLabel value="Usuário" for="usuario" />
+				<p:inputText id="usuario" size="20" value="#{usuarioMB.nomeUsuario}" />
+				<p:outputLabel value="Senha" for="senha" />
+				<p:password id="senha" size="20" value="#{usuarioMB.senha}" />
+				<p:outputLabel />
+			
+				<p:commandButton value="Acessar" action="#{usuarioMB.login}" />
+			
+			</h:panelGrid>
+		</h:form>
+	</div>
+</h:body>
+</html>
