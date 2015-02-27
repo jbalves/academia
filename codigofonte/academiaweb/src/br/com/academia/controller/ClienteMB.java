@@ -29,6 +29,11 @@ public class ClienteMB {
 		this.cliente = cliente;
 	}
 
+	public String visualizar() {
+		return "/visualizarCliente.xhtml?faces-redirect=true";
+	}
+	
+	
 	public String alterar() {
 		clienteDAO.alterar(cliente, cliente.getId());
 		return "/cadastroCliente.xhtml?faces-redirect=true";
