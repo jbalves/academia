@@ -3,6 +3,7 @@ package br.com.academia.controller;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.academia.model.bean.Cliente;
 import br.com.academia.model.dao.ClienteDAO;
@@ -11,11 +12,15 @@ import br.com.academia.model.dao.ClienteDAO;
 public class ConsultaClienteMB {
 
 	private Cliente cliente = new Cliente();
-	private ClienteDAO clienteDAO =  new ClienteDAO();
+	private ClienteDAO clienteDAO = new ClienteDAO();
 	private List<Cliente> clientes;
-	
+
 	public ConsultaClienteMB() {
 		clientes = clienteDAO.buscarTodos();
+	}
+
+	public void consultar() {
+		clientes = clienteDAO.buscarNome(cliente);
 	}
 
 	public Cliente getCliente() {
@@ -34,5 +39,4 @@ public class ConsultaClienteMB {
 		this.clientes = clientes;
 	}
 
-	
 }

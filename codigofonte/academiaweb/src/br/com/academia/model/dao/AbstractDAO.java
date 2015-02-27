@@ -75,4 +75,12 @@ public abstract class AbstractDAO<T extends AbstractBean, k> {
 		
 	}
 
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
 }

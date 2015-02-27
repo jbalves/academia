@@ -5,22 +5,23 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.academia.model.bean.Cliente;
+import br.com.academia.model.bean.Turma;
 import br.com.academia.util.JPAUtil;
 
-public class ClienteDAO extends AbstractDAO<Cliente, Integer> {
-	EntityManager manager;
-	
-	public ClienteDAO() {
-		super(Cliente.class);
+public class TurmaDAO extends AbstractDAO<Turma, Integer> {
+	private EntityManager manager;
+
+	public TurmaDAO() {
+		super(Turma.class);
 		manager = new JPAUtil().getEntityManager();
 	}
 
-	public List<Cliente> buscarNome(Cliente cliente) {
+	public List<Turma> buscarNome(Turma turma) {
+			
 		try{
 			Query query = manager
-					.createQuery("Select c from Cliente c where c.nome like :pCliente");
-			query.setParameter("pCliente", "%" + cliente.getNome() + "%");
+					.createQuery("Select t from Turma t where t.modalidade like :pTurma");
+			query.setParameter("pTurma", "%" + turma.getModalidade() + "%");
 			return query.getResultList();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -28,6 +29,7 @@ public class ClienteDAO extends AbstractDAO<Cliente, Integer> {
 		}finally{
 			manager.close();
 		}
+		
 	}
 
 }

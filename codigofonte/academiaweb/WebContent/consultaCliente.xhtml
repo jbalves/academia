@@ -7,22 +7,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="_template.xhtml">
+	
 	<ui:define name="conteudo">
-		<h:form id="frmCliente">
-			<p:panel header="Lista de Clientes" style="margin-top: 80px">
-				<p:outputPanel>
-					<p:inputText placeholder="Procurar cliente" style="width: 20%"
-						size="30" />
 
-					<p:commandButton id="btBuscar" value="Consultar"
-						title="consultar por nome" icon="ui-icon-search"
-						update=":frmCliente:dataTable" />
+		<h:form>
+			<p:panel header="Lista de Clientes" style="margin-top: 80px">
+
+				<p:outputPanel>
+
+					<p:inputText placeholder="Procurar cliente" style="width: 20%"
+						size="30" value="#{consultaClienteMB.cliente.nome}" />
+
+					<p:commandButton value="Consultar" update="tbl"
+						action="#{consultaClienteMB.consultar}" 
+						icon="ui-icon-search" />
 				</p:outputPanel>
 
 				<p:spacer width="100" height="10" />
 
-				<p:dataTable id="dataTable" value="#{consultaClienteMB.clientes}"
-					var="cliente" rows="10" paginator="true" paginatorPosition="bottom">
+				<p:dataTable id="tbl" value="#{consultaClienteMB.clientes}"
+					var="cliente" border="1"  paginator="true" paginatorPosition="bottom" rows="5" >
 
 					<p:column headerText="ID" style="width:5%">
 						<h:outputText value="#{cliente.id}" />
@@ -33,7 +37,7 @@
 					</p:column>
 
 					<p:column headerText="CPF" style="width:40%">
-						<h:outputText value="999.999.999-99" />
+						<h:outputText value="#{cliente.cpf}" />
 					</p:column>
 
 					<p:column style="width:15%;text-align:center" headerText="Ações">

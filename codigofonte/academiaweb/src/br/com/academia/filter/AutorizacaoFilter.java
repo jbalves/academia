@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.academia.model.bean.Usuario;
 
-//@WebFilter("*.xhtml")
+@WebFilter("/academiaweb/*")
 public class AutorizacaoFilter implements Filter {
 	
 	private Usuario usuario = new Usuario();

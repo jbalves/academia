@@ -1,8 +1,9 @@
 package br.com.academia.controller;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.academia.model.bean.Cliente;
 import br.com.academia.model.dao.ClienteDAO;
@@ -18,26 +19,29 @@ public class ClienteMB {
 		cliente = new Cliente();
 	}
 	
+	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	public String alterar(){
+
+	public String alterar() {
 		clienteDAO.alterar(cliente, cliente.getId());
 		return "/cadastroCliente.xhtml?faces-redirect=true";
 	}
-	
-	public String mensalidade(){
-		//clienteDAO.alterar(cliente, cliente.getId());
+
+	public String mensalidade() {
+		// clienteDAO.alterar(cliente, cliente.getId());
 		return "/mensalidade.xhtml?faces-redirect=true";
 	}
-	
-	public void salvar(){
-		clienteDAO.salvar(cliente);
-	}
 
+	public void salvar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		clienteDAO.salvar(cliente);
+		context.addMessage(null, new FacesMessage("Salvo com sucesso !!!"));
+	}
 }

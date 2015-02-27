@@ -6,16 +6,22 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.academia.model.bean.Turma;
 import br.com.academia.model.dao.AdapterDAO;
+import br.com.academia.model.dao.ClienteDAO;
+import br.com.academia.model.dao.TurmaDAO;
 
 @ManagedBean
 public class ConsultaTurmaMB {
 
 	private Turma turma = new Turma();
-	private AdapterDAO<Turma, Integer> turmaDAO = new AdapterDAO<Turma, Integer>(Turma.class);
+	private TurmaDAO turmaDAO = new TurmaDAO();
 	private List<Turma> turmas;
 	
 	public ConsultaTurmaMB() {
-		 turmas =  turmaDAO.buscarTodos();
+		turmas =  turmaDAO.buscarTodos();
+	}
+	
+	public void consultar() {
+		turmas = turmaDAO.buscarNome(turma);
 	}
 	
 	public List<Turma> getTurmas() {

@@ -22,9 +22,9 @@
 
 			<p:panelGrid columns="4" id="painel"
 				style="width: 100%; margin-top: 20px" cellpadding="5">
-
 				<p:outputLabel value="Nome" for="nome" />
-				<p:inputText id="nome" size="20" maxlength="20" value="#{clienteMB.cliente.nome}" />
+				<p:inputText id="nome" size="20" maxlength="20" value="#{clienteMB.cliente.nome}"
+				 requiredMessage="digite o nome" />
 
 				<p:outputLabel value="Sexo" />
 				<p:selectOneButton id="sexo" value="#{clienteMB.cliente.sexo}">

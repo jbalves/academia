@@ -8,20 +8,20 @@
 
 <ui:composition template="_template.xhtml">
 	<ui:define name="conteudo">
-		<h:form id="frmTurma">
+		<h:form>
 			<p:panel header="Lista de Turmas" style="margin-top: 80px">
 				<p:outputPanel>
-					<p:inputText placeholder="Procurar turma" style="width: 20%"
-						size="30" />
+					<p:inputText value="#{consultaTurmaMB.turma.modalidade}"
+						placeholder="Procurar modalidade" style="width: 20%" size="30" />
 
 					<p:commandButton id="btBuscar" value="Consultar"
-						title="consultar por nome" icon="ui-icon-search"
-						actionListener="#{turmaMB.listar}" update=":frmTurma:dataTable" />
+						title="consultar por modalidade" icon="ui-icon-search"
+						action="#{consultaTurmaMB.consultar}" update="tbl" />
 				</p:outputPanel>
 
 				<p:spacer width="100" height="10" />
 
-				<p:dataTable id="dataTable" value="#{consultaTurmaMB.turmas}"
+				<p:dataTable id="tbl" value="#{consultaTurmaMB.turmas}"
 					var="turma" rows="10" paginator="true" paginatorPosition="bottom">
 
 					<p:column headerText="ID" style="width:5%">
